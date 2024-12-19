@@ -35,7 +35,9 @@ import Control.DeepSeq
 import Data.Coerce (coerce)
 import Data.Data
 import Data.Type.Coercion (Coercion(..), coerceWith)
+#if __GLASGOW_HASKELL__ <= 912
 import Data.Word
+#endif
 import Language.Haskell.TH.Syntax
     ( Lift (..), lift )
 #if !MIN_VERSION_base(4,11,0)

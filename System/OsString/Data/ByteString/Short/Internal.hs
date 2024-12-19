@@ -44,7 +44,10 @@ import Foreign.Storable (pokeByteOff)
 #endif
 import Foreign.Marshal.Array (withArray0, peekArray0, newArray0, withArrayLen, peekArray)
 import GHC.Exts
+#if __GLASGOW_HASKELL__ <= 912
 import GHC.Word
+#endif
+
 import GHC.ST
     ( ST (ST) )
 import GHC.Stack ( HasCallStack )
@@ -458,4 +461,3 @@ compareByteArraysOff (BA# ba1#) ba1off (BA# ba2#) ba2off len =
 foreign import ccall unsafe "static sbs_memcmp_off"
   c_memcmp_ByteArray :: ByteArray# -> Int -> ByteArray# -> Int -> CSize -> IO CInt
 #endif
-
